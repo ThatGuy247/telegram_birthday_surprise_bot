@@ -89,7 +89,7 @@ entry3.pack(side=kin.LEFT, pady=10, padx=5)
 def func():
     ''' This is the main function that calls the bot function'''
 
-    tkk ='1492560890:AAHhXoJvVflH05KWwRe0d45DwS7xFTolP5U'
+    tkk ='1111111111:102030ADGFSGJJ' # put your token here
     txtt ='تولدت مبارک دوست من!'
     imgg ='http://www.coca.ir/wp-content/uploads/2020/11/%D9%85%D8%AA%D9%86-%D8%AA%D8%A8%D8%B1%DB%8C%DA%A9-%D8%AA%D9%88%D9%84%D8%AF%D8%AA-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9.jpg'
     o1 = entry1.get()

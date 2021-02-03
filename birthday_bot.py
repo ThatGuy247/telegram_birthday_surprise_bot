@@ -9,38 +9,42 @@ from telegram.ext import Updater, CommandHandler , MessageHandler , Filters
 from random import randint
 import tkinter as kin
 
-def config(tk , txt , img):
-    updater = Updater(token=tk , use_context=True)
-    
+######### Bot Configurations ########
+def config(token , txt , img):
+    ''' Bot Config '''
+    updater = Updater(token=token , use_context=True)
     dispatcher = updater.dispatcher
     
     def start(update, context):
+        '''Greets the user'''
         context.bot.send_message(chat_id=update.message.chat_id, text='Welcome!')
         context.bot.send_message(chat_id=update.message.chat_id, text='Send me a 2-digit number and see what happens!')
         
         
-    def ok(update, context):
+    def main(update, context):
         if int(update.message.text) < 20:
-            b = 20
-            context.bot.send_message(chat_id=update.message.chat_id, text='عددت کوچیک بود؛ خودم بزرگش میکنم!')
+            num = 20
+            context.bot.send_message(chat_id=update.message.chat_id, 
+                                     text='Thats a small number, I\'ll raise it myself')
         else:
-            b = int(update.message.text)
+            num = int(update.message.text)
             
-        for i in range(b):
+        for i in range(num):
             a = randint(0, 3)
-            context.bot.send_message(chat_id=update.message.chat_id, text=txt)
+            context.bot.send_message(chat_id=update.message.chat_id, text=txt) # sends deisred text
             if a not in [1,2]:
-                context.bot.send_photo(chat_id=update.message.chat_id, photo=img)
-    
+                context.bot.send_photo(chat_id=update.message.chat_id, photo=img) # sends desired image
     
     start_handler = CommandHandler('start', start)
-    message_handler = MessageHandler(Filters.text, ok)
+    message_handler = MessageHandler(Filters.text, main)
     
     
     dispatcher.add_handler(start_handler)
     dispatcher.add_handler(message_handler)
 
     updater.start_polling()
+    
+######### GUI Setup ########
     
 root = kin.Tk()   
 root.title('HBD Bot Config') 
@@ -80,25 +84,30 @@ label3.pack(side=kin.LEFT, pady=10, padx=5)
 entry3 = kin.Entry(frame3, textvariable='ex: http://abc.com/abc.jpg')
 entry3.pack(side=kin.LEFT, pady=10, padx=5)
 
+######### Main Function ########
+
 def func():
+    ''' This is the main function that calls the bot function'''
+
     tkk ='1492560890:AAHhXoJvVflH05KWwRe0d45DwS7xFTolP5U'
     txtt ='تولدت مبارک دوست من!'
     imgg ='http://www.coca.ir/wp-content/uploads/2020/11/%D9%85%D8%AA%D9%86-%D8%AA%D8%A8%D8%B1%DB%8C%DA%A9-%D8%AA%D9%88%D9%84%D8%AF%D8%AA-%D9%85%D8%A8%D8%A7%D8%B1%DA%A9.jpg'
     o1 = entry1.get()
     o2 = entry2.get()
     o3 = entry3.get()
-    if bool(o1) == True:
+    if o1:
         tkk = entry1.get()
-    if bool(o2) == True:
+    if o2:
         txtt = entry2.get()
-    if bool(o3) == True:
+    if o3:
         imgg = entry3.get()
        
-    config(tkk,txtt,imgg)
+    config(tkk,txtt,imgg) # calls the bot function
     
     label4 = kin.Label(frame4, text='Done!' , bg='#9C27B0' , fg='#FFFFFF')
     label4.pack(side=kin.LEFT, pady=10, padx=5)
 
+######### Start Button ########
 
 button= kin.Button(frame4, text='Run'  , bg='#FFFFFF' , command= lambda: func())
 button.pack(side=kin.LEFT, pady=10, padx=5)

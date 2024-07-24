@@ -7,7 +7,7 @@ Created on Thu Dec 17 20:31:21 2020
   
 from telegram.ext import Updater, CommandHandler , MessageHandler , Filters
 from random import randint
-import tkinter as kin
+import tkinter as kin 
  
 ######### Bot Configurations ########
 def config(token , txt , img):

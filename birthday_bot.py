@@ -5,7 +5,7 @@ Created on Thu Dec 17 20:31:21 2020
 @author: arman 
 """ 
   
-from telegram.ext import Updater, CommandHandler , MessageHandler , Filters
+from telegram.ext import Updater, CommandHandler , MessageHandler , Filters 
 from random import randint
 import tkinter as kin 
  

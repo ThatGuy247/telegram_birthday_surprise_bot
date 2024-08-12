@@ -10,7 +10,7 @@ from random import randint
 import tkinter as kin 
  
 ######### Bot Configurations ########
-def config(token , txt , img):
+def config(token , txt , img): 
     ''' Bot Config '''
     updater = Updater(token=token , use_context=True)
     dispatcher = updater.dispatcher
